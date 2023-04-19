@@ -101,7 +101,7 @@ void	print_linked(linked_lst *lst)
 }
 
 
-void	mid_point_a(s_variables *var, int mid_point)
+int	mid_point_a(s_variables *var, int mid_point, int chunk)
 {
 	int pos;
 	int dir;
@@ -110,51 +110,135 @@ void	mid_point_a(s_variables *var, int mid_point)
 
 	closer = lst_closer(&var->lst_a, mid_point);
 	pos = lst_pos(&var->lst_a, closer);
-	
-	ft_printf("closer num:  %d position: %d midpoint: %d\n", closer->num, pos, mid_point);
 	if (pos == 0)
 	{
 		func_pb(var);
+		var->lst_b->chunk = chunk;
 		print_information(var);
-		mid_point_a(var, mid_point);
 	}
 	else if (pos != -1)
 	{
 		if (pos >= var->lst_a_len / 2)
-		{
 			for(int i = 0; i < var->lst_a_len - pos; i++)
 				func_rra(var);
-		}
 		else
 			for(int i = pos; i > 0; i--)
 				func_ra(var);
-			mid_point_a(var, mid_point);
-		print_information(var);
 	}
-	
+	return (pos);
 }
 
-void	algorithm_1(s_variables *var)
+void	algorithm_1(s_variables *var, int chunk)
 {
 	int	big;
 	int	low;
 	int mid_point;
 	int i = 0;
+	int	pos;
 
-	while (!lst_in_order(&var->lst_a) && var->lst_a_len != 2)
+	pos = 0;
+	while (var->lst_a_len >= 2 && pos != -1)
 	{
-		big = lst_bigger(&var->lst_a)->num;
-		low = lst_lower(&var->lst_a)->num;
-		mid_point = (big + low) / 2;
-		mid_point_a(var, mid_point);
-		//if (i == 1)
-		//	exit(0);
+		if (i == 0)
+		{
+			big = lst_bigger(&var->lst_a)->num;
+			low = lst_lower(&var->lst_a)->num;
+			mid_point = (big + low) / 2;
+		}
+		pos = mid_point_a(var, mid_point, chunk);
 		i++;
-		//ft_printf("big:  %d low: %d midpoint: %d\n", big, low, mid_point);
 	}
 	if (!lst_in_order(&var->lst_a))
 		func_sa(var);
-	print_information(var);
+}
+
+int	mid_point_chunk(s_variables *var, int chunk)
+{
+	linked_lst *temp;
+	int lower;
+	int bigger;
+	int len;
+
+	temp = var->lst_b;
+	bigger = temp->num;
+	lower = temp->num;
+	len = 0;
+	while (temp && temp->chunk == chunk)
+	{
+		if (lower > temp->num)
+			lower = temp->num;
+		else if (bigger < temp->num)
+			bigger = temp->num;
+		temp = temp->next;
+		len++;
+	}
+	if (len == 0)
+		return (-1);
+	return ((bigger + lower) / 2);
+}
+
+int	lst_closer_chunk(linked_lst *lst, int midpoint, int chunk)
+{
+	int i;
+	int value;
+	int pos;
+	linked_lst *temp;
+
+	i = 0;
+	pos = -1;
+	temp = lst;
+	value = temp->num;
+	while (temp)
+	{
+		if (temp->num >= midpoint && value <= temp->num)
+		{
+			value = temp->num;
+			pos = i;
+		}
+		i++;
+		temp = temp->next;
+	}
+	return (pos);
+}
+
+int	mid_point_bigger(s_variables *var, int mid_point, int chunk)
+{
+	int pos;
+	int restore;
+
+	while ( var->lst_b && var->lst_b->chunk == chunk && pos != -1)
+	{
+		pos = lst_closer_chunk(var->lst_b, mid_point, chunk);
+		if (pos == 0 || pos == 1)
+		{
+			if (pos == 1)
+				func_sb(var);
+			func_pa(var);
+			var->lst_a->chunk = 0;
+		}
+		else if (pos != -1)
+		{
+			if (chunk != 0)
+				restore += pos;
+			for(int i = 0; i < pos; i++)
+				func_rb(var);
+			func_pa(var);
+			var->lst_a->chunk = 0;
+		}
+	}
+	for (int i = 0; i < restore, i++;)
+		func_rrb(var);
+}
+
+void	algorithm_2(s_variables *var, int chunk)
+{
+	int mid_point;
+
+	while ( var->lst_b && var->lst_b->chunk == chunk)
+	{
+		mid_point = mid_point_chunk(var, chunk);
+		mid_point_bigger(var, mid_point, chunk);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -184,11 +268,22 @@ int	main(int argc, char **argv)
 	temp_a->prev->next = NULL;
 	temp_a = var->lst_a;
 	var->lst_b = NULL;
-	print_information(var);
+	//print_information(var);
 	
 	var->lst_a_len = i - 1;
 	var->lst_b_len = 0;
-	//ALGORITHM
-	algorithm_1(var);
+
+	i = 0;
+	while (!lst_in_order(&var->lst_a))
+	{
+		algorithm_1(var, i);
+		i++;
+	}
+	while (i >= 0)
+	{
+		algorithm_2(var, i);
+		i--;
+	}
+	print_information(var);
 	return 0;
 }

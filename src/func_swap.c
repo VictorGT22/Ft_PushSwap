@@ -71,3 +71,9 @@ void	func_sa(s_variables *var)
 	ft_printf("sa\n");
 	swap_nodes(var->lst_a, var->lst_a, var->lst_a->next);
 }
+
+void	func_sb(s_variables *var)
+{
+	ft_printf("sb\n");
+	swap_nodes(var->lst_b, var->lst_b, var->lst_b->next);
+}

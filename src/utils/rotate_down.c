@@ -14,5 +14,9 @@
 
 void	rotate_down(linked_lst **lst)
 {
-	push_front(lst, lst, ft_lstlast(*lst));
+	linked_lst *last;
+
+	last = ft_lstlast(*lst);
+	push_front(lst, lst, last);
+	(*lst)->prev = NULL;
 }

@@ -6,6 +6,7 @@
 typedef struct linked_lst
 {
 	int num;
+	int chunk;
 	struct linked_lst	*next;
 	struct linked_lst	*prev;
 }	linked_lst;

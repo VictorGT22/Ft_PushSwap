@@ -25,14 +25,18 @@ void	print_information(s_variables *var)
 	{
 		if (temp_a)
 		{
-			ft_printf("%d ", temp_a->num);
+			//if (temp_a->prev)
+			//	ft_printf("%d<-", temp_a->prev->num);
+			ft_printf("%-5d", temp_a->num);
+			//if (temp_a->next)
+			//	ft_printf("->%d", temp_a->next->num);
 			temp_a = temp_a->next;
 		}
 		else
-			ft_printf("  ");
+			ft_printf("     ");
 		if (temp_b)
 		{
-			ft_printf("%d", temp_b->num);
+			ft_printf("%5d->%d", temp_b->num, temp_b->chunk);
 			temp_b = temp_b->next;
 		}
 		ft_printf("\n");

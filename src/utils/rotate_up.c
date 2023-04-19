@@ -24,7 +24,6 @@ linked_lst	*ft_lstlast(linked_lst *lst)
 	return (temp);
 }
 
-
 void	ft_lstadd_back(linked_lst **lst, linked_lst *new)
 {
 	linked_lst	*temp;

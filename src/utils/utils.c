@@ -80,6 +80,8 @@ int	lst_pos(linked_lst **lst, linked_lst *node)
 
 	i = 0;
 	temp = *lst;
+	if (!node)
+		return (-1);
 	while (temp)
 	{
 		if(temp == node)
@@ -98,11 +100,12 @@ linked_lst *lst_closer(linked_lst **lst, int mid_point)
 	int j;
 
 	temp = *lst;
+	pos = NULL;
 	i = 0;
 	j = 1;
 	while (temp)
 	{
-		if (temp->num < mid_point)
+		if (temp->num <= mid_point)
 		{
 			pos = temp;
 			break;
@@ -113,7 +116,7 @@ linked_lst *lst_closer(linked_lst **lst, int mid_point)
 	temp = ft_lstlast(*lst);
 	while (temp)
 	{
-		if (temp->num < mid_point && j <= i && temp->num < pos->num)
+		if (temp->num <= mid_point && j <= i && temp->num < pos->num)
 		{
 			pos = temp;
 			break;
@@ -123,3 +126,40 @@ linked_lst *lst_closer(linked_lst **lst, int mid_point)
 	}
 	return (pos);
 }
+
+
+linked_lst *lst_closer_bigger(linked_lst **lst, int mid_point)
+{
+	linked_lst *temp;
+	linked_lst *pos;
+	int	i;
+	int j;
+
+	temp = *lst;
+	pos = NULL;
+	i = 0;
+	j = 1;
+	while (temp)
+	{
+		if (temp->num >= mid_point)
+		{
+			pos = temp;
+			break;
+		}
+		i++;
+		temp = temp->next;
+	}
+	temp = ft_lstlast(*lst);
+	while (temp)
+	{
+		if (temp->num <= mid_point && j <= i && temp->num < pos->num)
+		{
+			pos = temp;
+			break;
+		}
+		j++;
+		temp = temp->prev;
+	}
+	return (pos);
+}
+

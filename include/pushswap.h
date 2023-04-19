@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "pushswap_struct.h"
+# include <stdbool.h>
 
 //DISPLAY INFO
 void	print_information(s_variables *var);
@@ -33,6 +34,7 @@ void	func_rr(s_variables *var);
 void	func_rb(s_variables *var);
 void	func_ra(s_variables *var);
 void	func_sa(s_variables *var);
+void	func_sb(s_variables *var);
 
 //UTILS
 	
