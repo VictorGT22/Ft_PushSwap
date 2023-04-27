@@ -6,15 +6,15 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 01:00:05 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/14 09:25:16 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/27 08:55:52 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-linked_lst	*ft_lstlast(linked_lst *lst)
+t_linked_lst	*ft_lstlast(t_linked_lst *lst)
 {
-	linked_lst	*temp;
+	t_linked_lst	*temp;
 
 	if (!lst)
 		return (NULL);
@@ -24,9 +24,9 @@ linked_lst	*ft_lstlast(linked_lst *lst)
 	return (temp);
 }
 
-void	ft_lstadd_back(linked_lst **lst, linked_lst *new)
+void	ft_lstadd_back(t_linked_lst **lst, t_linked_lst *new)
 {
-	linked_lst	*temp;
+	t_linked_lst	*temp;
 
 	if (lst)
 	{
@@ -41,9 +41,9 @@ void	ft_lstadd_back(linked_lst **lst, linked_lst *new)
 	}
 }
 
-void	rotate_up(linked_lst **lst)
+void	rotate_up(t_linked_lst **lst)
 {
-	linked_lst	*temp;
+	t_linked_lst	*temp;
 
 	temp = *lst;
 	if ((*lst)->next)

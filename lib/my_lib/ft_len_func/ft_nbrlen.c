@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:09:12 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 08:14:16 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:01:12 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_nbrlen(long long int nbr)
 {
 	int	i;
+
 	i = 0;
 	if (nbr <= 0)
 	{

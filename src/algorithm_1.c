@@ -3,21 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:02:19 by vics              #+#    #+#             */
-/*   Updated: 2023/04/26 16:20:01 by vics             ###   ########.fr       */
+/*   Updated: 2023/04/27 09:24:02 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	mid_point_a(s_variables *var, int mid_point, int chunk)
+void	external_midpoint_a(t_variables *var, int pos)
 {
-	int pos;
-	int dir;
-	int mid;
-	linked_lst *closer;
+	int	i;
+
+	if (pos >= var->lst_a_len / 2)
+	{
+		i = 0;
+		while (i < var->lst_a_len - pos)
+		{
+			func_rra(var);
+			i++;
+		}
+	}
+	else
+	{
+		i = pos;
+		while (i > 0)
+		{
+			func_ra(var);
+			i--;
+		}
+	}
+}
+
+int	mid_point_a(t_variables *var, int mid_point, int chunk)
+{
+	int				pos;
+	int				dir;
+	int				mid;
+	t_linked_lst	*closer;
 
 	closer = lst_closer(&var->lst_a, mid_point);
 	pos = lst_pos(&var->lst_a, closer);
@@ -27,26 +51,19 @@ int	mid_point_a(s_variables *var, int mid_point, int chunk)
 		var->lst_b->chunk = chunk;
 	}
 	else if (pos != -1)
-	{
-		if (pos >= var->lst_a_len / 2)
-			for(int i = 0; i < var->lst_a_len - pos; i++)
-				func_rra(var);
-		else
-			for(int i = pos; i > 0; i--)
-				func_ra(var);
-
-	}
+		external_midpoint_a(var, pos);
 	return (pos);
 }
 
-void	algorithm_1(s_variables *var, int chunk)
+void	algorithm_1(t_variables *var, int chunk)
 {
 	int	big;
 	int	low;
-	int mid_point;
-	int i = 0;
+	int	mid_point;
+	int	i;
 	int	pos;
 
+	i = 0;
 	pos = 0;
 	while (pos != -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:25:32 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:13:50 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:03:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_inarr(char **arr, char *to_find)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i] != NULL)

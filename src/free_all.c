@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 13:45:15 by vics              #+#    #+#             */
-/*   Updated: 2023/04/26 15:51:52 by vics             ###   ########.fr       */
+/*   Updated: 2023/04/27 08:58:32 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	free_linkeds(linked_lst *lst)
+void	free_linkeds(t_linked_lst *lst)
 {
-	linked_lst *temp;
-	linked_lst *node;
+	t_linked_lst	*temp;
+	t_linked_lst	*node;
 
-	lst;
 	while (lst)
 	{
 		node = lst;
@@ -27,11 +26,11 @@ void	free_linkeds(linked_lst *lst)
 	free(lst);
 }
 
-void	free_info(s_variables *var)
+void	free_info(t_variables *var)
 {
 	if (var->lst_a)
 		free_linkeds(var->lst_a);
-	if (var->lst_b)	
+	if (var->lst_b)
 		free_linkeds(var->lst_b);
 	free(var);
 }

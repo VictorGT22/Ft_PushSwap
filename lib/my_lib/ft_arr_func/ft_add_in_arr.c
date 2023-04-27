@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:31:46 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:32:07 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:03:54 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	ft_add_in_arr(char *arr, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i] != '\0')
 		i++;
 	arr[i] = c;
 	arr[i + 1] = '\0';
-		
 }

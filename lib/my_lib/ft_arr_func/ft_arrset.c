@@ -6,15 +6,15 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:02:56 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:03:06 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:04:36 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_arrset(char **arr, char *str, int len)
+void	ft_arrset(char **arr, char *str, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vics <vics@student.42.fr>                  +#+  +:+       +#+         #
+#    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/04/26 16:26:56 by vics             ###   ########.fr        #
+#    Updated: 2023/04/27 09:16:32 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC_FILES	=	swap_info			\
 				algorithm_1			\
 				algorithm_2			\
 				utils/push_lst		\
-				utils/utils			\
+				utils/utils_1		\
+				utils/utils_2		\
 				utils/rotate_up		\
 				utils/rotate_down
 
@@ -51,13 +52,7 @@ LIB_DIR = lib/my_lib
 
 INCLUDES_MY_LIB = -I./$(LIB_DIR)/include
 
-FT_PRINTF_DIR = lib/ft_printf
-
-INCLUDES_FT_PRINTF = -I./$(FT_PRINTF_DIR)/include
-
 LIB = -L./$(LIB_DIR) -lft
-
-FT_LIB = -L./$(FT_PRINTF_DIR) -lft
 
 ####	COLORS	####
 
@@ -76,12 +71,12 @@ WHITE = \033[0;97m
 all: libft $(EXECUTABLE) write_name
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(INCLUDES_FT_PRINTF) $(INCLUDES_MY_LIB) $(OBJECTS) $(FT_LIB) $(LIB) -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) $(INCLUDES) $(INCLUDES_MY_LIB) $(OBJECTS) $(LIB) -o $(EXECUTABLE)
 	@echo "$(MAGENTA)======>$(GREEN)$(EXECUTABLE) compiled! $(MAGENTA)<======$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@echo "$(MAGENTA)======>$(GREEN)Compiling: $(YELLOW)$< $(DEF_COLOR)"
-	$(CC) $(CFLAGS) $(INCLUDES) $(INCLUDES_FT_PRINTF) $(INCLUDES_MY_LIB) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) $(INCLUDES_MY_LIB) -c $< -o $@
 
 $(OBJF):
 		@mkdir -p $(OBJ_DIR)
@@ -101,10 +96,8 @@ fclean: clean
 	rm -f $(EXECUTABLE)
 	@echo "$(MAGENTA)======>$(CYAN)$(EXECUTABLE)executable files cleaned!$(DEF_COLOR)"
 	make -C $(LIB_DIR) fclean
-	make -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
 libft:
 	make -C $(LIB_DIR)
-	make -C $(FT_PRINTF_DIR)

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:06:25 by vics              #+#    #+#             */
-/*   Updated: 2023/04/26 16:08:22 by vics             ###   ########.fr       */
+/*   Updated: 2023/04/27 10:40:19 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	mid_point_chunk(s_variables *var, int chunk)
+int	mid_point_chunk(t_variables *var, int chunk)
 {
-	linked_lst *temp;
-	int lower;
-	int bigger;
-	int len;
+	t_linked_lst	*temp;
+	int				lower;
+	int				bigger;
+	int				len;
 
 	temp = var->lst_b;
 	bigger = temp->num;
@@ -37,12 +37,12 @@ int	mid_point_chunk(s_variables *var, int chunk)
 	return ((bigger + lower) / 2);
 }
 
-int	lst_closer_chunk(linked_lst *lst, int midpoint, int chunk)
+int	lst_closer_chunk(t_linked_lst *lst, int midpoint, int chunk)
 {
-	int i;
-	int value;
-	int pos;
-	linked_lst *temp;
+	int				i;
+	int				value;
+	int				pos;
+	t_linked_lst	*temp;
 
 	i = 0;
 	pos = -1;
@@ -61,12 +61,37 @@ int	lst_closer_chunk(linked_lst *lst, int midpoint, int chunk)
 	return (pos);
 }
 
-int	mid_point_bigger(s_variables *var, int mid_point, int chunk)
+int	ext_mid_point_bigger(t_variables *var, int pos, int chunk)
 {
-	int pos;
-	int restore;
+	int	i;
+	int	restore;
 
+	i = 0;
+	restore = 0;
+	if (pos != -1)
+	{
+		if (chunk != 0)
+			restore += pos;
+		while (i < pos)
+		{
+			func_rb(var);
+			i++;
+		}
+		func_pa(var);
+		var->lst_a->chunk = 0;
+	}
+	return (restore);
+}
+
+void	mid_point_bigger(t_variables *var, int mid_point, int chunk)
+{
+	int	i;
+	int	pos;
+	int	restore;
+
+	i = 0;
 	pos = 0;
+	restore = 0;
 	while (var->lst_b && var->lst_b->chunk == chunk && pos != -1)
 	{
 		pos = lst_closer_chunk(var->lst_b, mid_point, chunk);
@@ -77,23 +102,19 @@ int	mid_point_bigger(s_variables *var, int mid_point, int chunk)
 			func_pa(var);
 			var->lst_a->chunk = 0;
 		}
-		else if (pos != -1)
-		{
-			if (chunk != 0)
-				restore += pos;
-			for(int i = 0; i < pos; i++)
-				func_rb(var);
-			func_pa(var);
-			var->lst_a->chunk = 0;
-		}
+		else
+			restore = ext_mid_point_bigger(var, pos, chunk);
 	}
-	for (int i = 0; i < restore, i++;)
+	while (i < pos)
+	{
 		func_rrb(var);
+		i++;
+	}
 }
 
-void	algorithm_2(s_variables *var, int chunk)
+void	algorithm_2(t_variables *var, int chunk)
 {
-	int mid_point;
+	int	mid_point;
 
 	while (var->lst_b && var->lst_b->chunk == chunk)
 	{
