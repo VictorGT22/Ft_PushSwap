@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
+#    By: vics <vics@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/14 09:29:20 by victgonz         ###   ########.fr        #
+#    Updated: 2023/04/26 16:26:56 by vics             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,14 @@ SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRC_FILES	=	print				\
-				func_swap			\
-				display_info		\
+SRC_FILES	=	swap_info			\
+				func_swap_1			\
+				func_swap_2			\
+				free_all			\
+				linked_func			\
+				push_swap			\
+				algorithm_1			\
+				algorithm_2			\
 				utils/push_lst		\
 				utils/utils			\
 				utils/rotate_up		\
@@ -36,7 +41,7 @@ OBJECTS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF		=	.cache_exists
 
-EXECUTABLE = program
+EXECUTABLE = push_swap
 
 ## INCLUDES
 

@@ -66,6 +66,7 @@ void			ft_arrset(char **arr, char *str, int len);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putptr(uintptr_t num, char *base);
 void			ft_add_in_arr(char *arr, char c);
+long    int	    ft_atoi(const char *str);
 //t_list			*ft_lstnew(void *content);
 //void 			ft_lstadd_front(t_list **lst, t_list *new);
 //int 			ft_lstsize(t_list *lst);

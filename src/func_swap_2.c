@@ -1,79 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func_swap.c                                        :+:      :+:    :+:   */
+/*   func_swap_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:24:41 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/14 12:47:57 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:23:53 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	func_pb(s_variables *var)
-{
-	ft_printf("pb\n");
-	var->lst_a_len--;
-	var->lst_b_len++;
-	push_front(&var->lst_a, &var->lst_b, var->lst_a);
-}
-
-void	func_pa(s_variables *var)
-{
-	ft_printf("pa\n");
-	var->lst_a_len++;
-	var->lst_b_len--;
-	push_front(&var->lst_b, &var->lst_a, var->lst_b);
-}
-
-void	func_ra(s_variables *var)
-{
-	ft_printf("ra\n");
-	rotate_up(&var->lst_a);
-}
-
-void	func_rb(s_variables *var)
-{
-	ft_printf("ra\n");
-	rotate_up(&var->lst_b);
-}
-
-void	func_rr(s_variables *var)
-{
-	ft_printf("rr\n");
-	rotate_up(&var->lst_a);
-	rotate_up(&var->lst_b);
-}
-
 void	func_rra(s_variables *var)
 {
-	ft_printf("rra\n");
+	ft_putstr_fd("rra\n", 1);
 	rotate_down(&var->lst_a);
 }
 
 void	func_rrb(s_variables *var)
 {
-	ft_printf("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 	rotate_down(&var->lst_b);
 }
 
 void	func_rrr(s_variables *var)
 {
-	ft_printf("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 	rotate_down(&var->lst_a);
 	rotate_down(&var->lst_b);
 }
 
 void	func_sa(s_variables *var)
 {
-	ft_printf("sa\n");
+	ft_putstr_fd("sa\n", 1);
 	swap_nodes(var->lst_a, var->lst_a, var->lst_a->next);
 }
 
 void	func_sb(s_variables *var)
 {
-	ft_printf("sb\n");
+	ft_putstr_fd("sb\n", 1);
 	swap_nodes(var->lst_b, var->lst_b, var->lst_b->next);
 }

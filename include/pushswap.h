@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:43:48 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/14 12:40:59 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:05:00 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "ft_printf.h"
 # include "pushswap_struct.h"
 # include <stdbool.h>
+# include <limits.h>
+
+//MACROS
+# define ERROR_MSG "Error\n" 
 
 //DISPLAY INFO
 void	print_information(s_variables *var);
@@ -36,9 +40,28 @@ void	func_ra(s_variables *var);
 void	func_sa(s_variables *var);
 void	func_sb(s_variables *var);
 
+//LINKEDS
+linked_lst *init_list();
+linked_lst 	*new_node(int num);
+void		lstadd_back(linked_lst **lst, linked_lst *new);
+linked_lst	*lstlast(linked_lst *lst);
+int 		add_info_linked(s_variables *var, int argc, char **argv);
+
+//PUSHSWAP
+void 	push_swap(s_variables *var, int argc, char **argv);
+
+//ALGORITHM 1
+int		mid_point_a(s_variables *var, int mid_point, int chunk);
+void	algorithm_1(s_variables *var, int chunk);
+
+//FREE INFO
+void	free_linkeds(linked_lst *lst);
+void	free_info(s_variables *var);
+
 //UTILS
 	
 	//UTILS
+	int	many_sorted(linked_lst *lst, bool incr);
 	int	ft_lstsize(t_list *lst);
 	int	lst_in_order(linked_lst **lst);
 	linked_lst *lst_lower(linked_lst **lst);
