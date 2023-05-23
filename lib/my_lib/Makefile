@@ -15,6 +15,7 @@ SRCS = 	ft_fd_func/ft_putchar_fd.c		\
 		ft_is_func/ft_isdigit.c			\
 		ft_is_func/ft_isprint.c			\
 		ft_is_func/ft_isspace.c			\
+		ft_is_func/ft_issign.c			\
 		ft_is_func/ft_str_isdigit.c		\
 		ft_len_func/ft_nbrlen.c			\
 		ft_len_func/ft_strlen.c			\

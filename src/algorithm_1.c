@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:02:19 by vics              #+#    #+#             */
-/*   Updated: 2023/04/27 09:24:02 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/05/23 23:38:16 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdio.h>
 
 void	external_midpoint_a(t_variables *var, int pos)
 {
@@ -76,6 +77,8 @@ void	algorithm_1(t_variables *var, int chunk)
 		pos = mid_point_a(var, mid_point, chunk);
 		i++;
 	}
-	if (!lst_in_order(&var->lst_a))
-		func_sa(var);
+	//printf("MIDPOINT %d\n", mid_point);
+	//print_information(var);
+	//if (!lst_in_order(&var->lst_a))
+	//	func_sa(var);
 }

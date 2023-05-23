@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 00:43:31 by victgonz          #+#    #+#             */
-/*   Updated: 2023/05/23 11:10:19 by vics             ###   ########.fr       */
+/*   Created: 2023/05/23 11:08:57 by vics              #+#    #+#             */
+/*   Updated: 2023/05/23 11:11:27 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_isdigit(char *str)
+int	ft_issign(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]) && !ft_issign(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (c == '+' || c == '-')
+		return (1);
+	return (0);
 }

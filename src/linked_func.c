@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   linked_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:53:23 by vics              #+#    #+#             */
-/*   Updated: 2023/04/27 08:58:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:19:50 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdio.h>
 
 t_linked_lst	*new_node(int num)
 {
@@ -79,5 +80,6 @@ int	add_info_linked(t_variables *var, int argc, char **argv)
 	}
 	var->lst_a_len = i - 1;
 	var->lst_b_len = 0;
+	//printf("no error\n");
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:21:08 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/27 09:05:21 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:11:44 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdint.h>
 
 int				ft_isalpha(char c);
+int				ft_issign(char c);
 int				ft_strlen(const char *str);
 int				ft_ptrlen(uintptr_t num);
 int				ft_nbrlen(long long int nbr);

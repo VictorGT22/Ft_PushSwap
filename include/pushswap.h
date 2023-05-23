@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 23:43:48 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/27 09:04:17 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:44:07 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int				add_info_linked(t_variables *var, int argc, char **argv);
 
 //PUSHSWAP
 void			push_swap(t_variables *var, int argc, char **argv);
+int	no_bigger_num(t_variables *var);
 
 //ALGORITHM 1
 int				mid_point_a(t_variables *var, int mid_point, int chunk);
