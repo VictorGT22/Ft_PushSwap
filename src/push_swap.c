@@ -6,7 +6,7 @@
 /*   By: vics <vics@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 13:44:40 by vics              #+#    #+#             */
-/*   Updated: 2023/05/23 23:35:41 by vics             ###   ########.fr       */
+/*   Updated: 2023/05/24 10:53:44 by vics             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void	push_swap(t_variables *var, int argc, char **argv)
 	if (add_info_linked(var, argc, argv) == -1)
 		return ;
 	//lst_in_order(&var->lst_a);
-	//print_information(var);
+	print_information(var);
 	while (!lst_in_order(&var->lst_a))
 	{
-		if (var->lst_a_len >= 2 && var->lst_a->num > var->lst_a->next->num)
-			func_sa(var);
+		//if (var->lst_a_len >= 2 && var->lst_a->num > var->lst_a->next->num)
+		//	func_sa(var);
 		i = 0;
 		while (var->lst_a_len >= 2)
 			algorithm_1(var, i++);
@@ -92,9 +92,11 @@ void	push_swap(t_variables *var, int argc, char **argv)
 			algorithm_2(var, i--);
 			//exit(0);
 		}
+		
 		//printf("ENTRA\n");
-		//sleep(1);
+		sleep(1);
 	}
+	print_information(var);
 }
 
 int	main(int argc, char **argv)
@@ -108,5 +110,6 @@ int	main(int argc, char **argv)
 		return (0);
 	push_swap(var, argc, argv);
 	free_info(var);
+	printf("ELEMENTOS: %d\n", argc);
 	return (0);
 }
